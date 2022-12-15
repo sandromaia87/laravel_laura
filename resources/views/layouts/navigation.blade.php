@@ -15,13 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('campeonato.index')" :active="request()->routeIs('campeonato.index')">
+                    <x-nav-link :href="route('championship.index')" :active="request()->routeIs('championship.index')">
                         {{ __('Campeonato') }}
                     </x-nav-link>
-                </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('suporte')" :active="request()->routeIs('suporte')">
                         {{ __('Suporte') }}
                     </x-nav-link>
@@ -80,7 +76,13 @@
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-        </div>
+            <x-responsive-nav-link :href="route('championship.index')" :active="request()->routeIs('championship.index')">
+                {{ __('Meus Campeonatos') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('suporte')" :active="request()->routeIs('suporte')">
+                {{ __('Suporte') }}
+            </x-responsive-nav-link>
+        </div>       
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

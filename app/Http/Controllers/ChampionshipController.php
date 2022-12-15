@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Models;
 
-class CampeonatoController extends Controller
+class ChampionshipController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class CampeonatoController extends Controller
      */
     public function index()
     {
-        return view('campeonato.index');
+        return view('championship.index');
     }
 
     /**
