@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CampeonatoController;
+use App\Http\Controllers\ChampionshipController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,8 +32,8 @@ Route::middleware('auth')->group(function () {
         return view('suporte');
     })->name('suporte');
 
-    Route::resource('meuscampeonatos', CampeonatoController::class)
-        ->names('campeonato');
+    Route::resource('meuscampeonatos', ChampionshipController::class)
+        ->names('championship');
     
 });
 

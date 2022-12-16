@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Championship;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class CampeonatoController extends Controller
+class ChampionshipController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,8 @@ class CampeonatoController extends Controller
      */
     public function index()
     {
-        return view('campeonato.index');
+        $championships = championship::all();
+        return view('championship.index', ['championships' => $championships]);
     }
 
     /**
@@ -23,7 +26,7 @@ class CampeonatoController extends Controller
      */
     public function create()
     {
-        
+        return view('championship.create');
     }
 
     /**
@@ -34,27 +37,33 @@ class CampeonatoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $championship = Championship::create([
+            'name' => $request->name,
+            'type' => $request->type,
+
+        ]);
+        $championships = championship::all();
+        return view('Championship.index', ['championships' => $championships]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Championship  $championship
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Championship $championship)
     {
-        //
+        return "entre";
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Championship  $championship
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Championship $championship)
     {
         //
     }
@@ -63,10 +72,10 @@ class CampeonatoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Championship  $championship
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Championship $championship)
     {
         //
     }
@@ -74,10 +83,10 @@ class CampeonatoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Championship  $championship
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Championship $championship)
     {
         //
     }

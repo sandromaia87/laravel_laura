@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('campeonato', function (Blueprint $table) {
+        Schema::create('championship', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('name')->unique();
-            $table->boolean('confirmed')->nullable()->default(false);
+            $table->integer('type')->unsigned()->nullable()->default(1);
+            $table->boolean('status')->nullable()->default(false);
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('campeonato');
+        Schema::dropIfExists('championship');
     }
 };
