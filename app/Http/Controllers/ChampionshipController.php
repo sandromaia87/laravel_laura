@@ -15,7 +15,7 @@ class ChampionshipController extends Controller
      */
     public function index()
     {
-        $championships = championship::all();
+        $championships = championship::all()->where('user_id',Auth::user()->id);
         return view('championship.index', ['championships' => $championships]);
     }
 
@@ -40,7 +40,6 @@ class ChampionshipController extends Controller
         $championship = Championship::create([
             'name' => $request->name,
             'type' => $request->type,
-
         ]);
         $championships = championship::all();
         return view('Championship.index', ['championships' => $championships]);
@@ -54,7 +53,9 @@ class ChampionshipController extends Controller
      */
     public function show(Championship $championship)
     {
-        return "entre";
+        return view('championship.show', [
+            'championship' => $championship,
+        ]);
     }
 
     /**

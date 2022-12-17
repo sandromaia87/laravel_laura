@@ -32,9 +32,10 @@ Route::middleware('auth')->group(function () {
         return view('suporte');
     })->name('suporte');
 
-    Route::resource('meuscampeonatos', ChampionshipController::class)
+    Route::resource('championships', ChampionshipController::class)
         ->names('championship');
-    
+
 });
+
 
 require __DIR__.'/auth.php';
