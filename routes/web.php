@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
         return view('suporte');
     })->name('suporte');
 
-    Route::resource('championships', ChampionshipController::class)
+    Route::resource('/championships', ChampionshipController::class)
         ->names('championship');
 
 });

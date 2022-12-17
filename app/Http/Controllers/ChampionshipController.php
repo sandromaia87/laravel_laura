@@ -88,5 +88,6 @@ class ChampionshipController extends Controller
     public function destroy(Championship $championship)
     {
         Alert::toast('Your Post as been submited!','success');
+        echo "entrei";
     }
 }
