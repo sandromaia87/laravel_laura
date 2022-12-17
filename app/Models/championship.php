@@ -15,7 +15,7 @@ class Championship extends Model
     protected $fillable = [
         'user_id',
         'name',
-        'type',  
+        'type',
     ];
 
     public static function boot()
