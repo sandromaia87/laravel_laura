@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Championship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ChampionshipController extends Controller
 {
@@ -37,11 +38,8 @@ class ChampionshipController extends Controller
      */
     public function store(Request $request)
     {
-        $championship = Championship::create([
-            'name' => $request->name,
-            'type' => $request->type,
-        ]);
-        $championships = championship::all();
+        $championship = Championship::create($request->all());
+        $championships = championship::all()->where('user_id',Auth::user()->id);
         return view('Championship.index', ['championships' => $championships]);
     }
 
@@ -89,6 +87,6 @@ class ChampionshipController extends Controller
      */
     public function destroy(Championship $championship)
     {
-        //
+        Alert::toast('Your Post as been submited!','success');
     }
 }
