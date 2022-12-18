@@ -40,6 +40,7 @@ class ChampionshipController extends Controller
     {
         $championship = Championship::create($request->all());
         $championships = championship::all()->where('user_id',Auth::user()->id);
+        Alert::success('Sucesso', 'Seu campeonato foi criado e está pronto para ser configurado');
         return view('Championship.index', ['championships' => $championships]);
     }
 
@@ -64,7 +65,8 @@ class ChampionshipController extends Controller
      */
     public function edit(Championship $championship)
     {
-        //
+        Alert::success('sucesso', 'Entrei no editar');
+        return __('Entrei no editar');
     }
 
     /**
@@ -76,7 +78,7 @@ class ChampionshipController extends Controller
      */
     public function update(Request $request, Championship $championship)
     {
-        //
+
     }
 
     /**
@@ -87,7 +89,11 @@ class ChampionshipController extends Controller
      */
     public function destroy(Championship $championship)
     {
-        Alert::toast('Your Post as been submited!','success');
-        echo "entrei";
+        $championship->delete();
+        Alert::success('Excluído', 'Seu campeonato foi excluído com sucesso');
+        $championships = Championship::all()->where('user_id',Auth::user()->id);
+        return view('championship.index', ['championships' => $championships]);
+
+
     }
 }
