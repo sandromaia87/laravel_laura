@@ -13,24 +13,15 @@
             </h3>
             </div>
             <div class="card-body">
-              <div class="mb-3">
-                <label class="form-label required">Nome</label>
-                <div>
-                  <input type="text" class="form-control" id="name" name="name">
-                  <small class="form-hint">Este nome estará visível para os participantes</small>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Tipo</label>
-                <div>
-                  <select class="form-select" id="type" name="type">
-                    <option value="1">Crossfit</option>
-                    <option value="2">Corrida</option>
-                    <option value="3">Futevolei</option>
-                  </select>
-                </div>
-              </div>
+                {{ __('informações do campeonato'); }}
             </div>
+            <div class="card-footer text-end">
+                <button form="delete-camp" onclick="return confirm('Você tem certeza disso?');" type="submit" class="btn btn-danger">Deletar</button>
+                  <form method="POST" class="form" id="delete-camp" action="{{ route('championship.destroy', $championship->id) }}">
+                    @csrf
+                    @method('DELETE')
+                </form>
+              </div>
           </div>
         </div>
       </div>
