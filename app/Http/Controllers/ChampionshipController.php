@@ -38,9 +38,10 @@ class ChampionshipController extends Controller
      */
     public function store(Request $request)
     {
-        $championship = Championship::create($request->all());
-        $championships = championship::all()->where('user_id',Auth::user()->id);
+        Championship::create($request->all());
         Alert::success('Sucesso', 'Seu campeonato foi criado e está pronto para ser configurado');
+        
+        $championships = championship::all()->where('user_id',Auth::user()->id);
         return view('Championship.index', ['championships' => $championships]);
     }
 
@@ -80,6 +81,17 @@ class ChampionshipController extends Controller
      */
     public function update(Request $request, Championship $championship)
     {
+        if($request->validate([
+            'name' => 'required',
+            ]))
+        {
+            Alert::warning('Atenção', 'Preencha todos os campos');
+        }
+
+        $championship->fill($request->post())->save();
+
+        Alert::success('Sucesso', 'Seu campeonato foi atualizado');
+        return view('championship.show', ['championship' => $championship,]);
 
     }
 
