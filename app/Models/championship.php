@@ -15,6 +15,7 @@ class Championship extends Model
     protected $fillable = [
         'user_id',
         'name',
+        'email',
         'type',
     ];
 

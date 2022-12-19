@@ -9,6 +9,7 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <form class="card" action="{{ route('championship.update',$championship) }}" method="POST">
             @csrf
+            @method('PUT')
             <div class="card-header">
                 <h3 class="card-title">{{ $championship->name }}
             </div>
@@ -16,18 +17,15 @@
               <div class="mb-3">
                 <label class="form-label required">Nome</label>
                 <div>
-                  <input type="text" class="form-control" id="name" name="name">
+                  <input type="text" class="form-control" id="name" name="name" value="{{ $championship->name }}">
                   <small class="form-hint">Este nome estará visível para os participantes</small>
                 </div>
               </div>
               <div class="mb-3">
-                <label class="form-label">Tipo</label>
+                <label class="form-label">Email</label>
                 <div>
-                  <select class="form-select" id="type" name="type"> 
-                    <option value="1">Crossfit</option>
-                    <option value="2">Corrida</option>
-                    <option value="3">Futevolei</option>
-                  </select>
+                  <input type="text" class="form-control" id="email" name="email" value="{{ $championship->email }}">
+                  <small class="form-hint">Será usado como contato extra no seu campeonato</small>
                 </div>
               </div>
             </div>
