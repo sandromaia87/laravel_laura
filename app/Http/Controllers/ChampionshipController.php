@@ -65,8 +65,10 @@ class ChampionshipController extends Controller
      */
     public function edit(Championship $championship)
     {
-        Alert::success('sucesso', 'Entrei no editar');
-        return __('Entrei no editar');
+        Alert::warning('Cuidado', 'Após salvar, as informações estarão disponíveis no sistema automaticamente');
+        return view('championship.edit', [
+            'championship' => $championship,
+        ]);
     }
 
     /**
