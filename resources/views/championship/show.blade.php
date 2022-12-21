@@ -1,49 +1,51 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Informações do campeonato') }}
-        </h2>
-    </x-slot>
-    <div class="py-12">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">{{ $championship->name }}
-            </h3>
+      <div class="container-xl">
+        <div class="row g-2 align-items-center">
+          <div class="col">
+            <!-- Page pre-title -->
+            <div class="page-pretitle">
+              {{ __('Campeonato') }}
             </div>
-            <div class="card-body">
-              <div class="card">
-                <div class="card-status-start bg-dark"></div>
-                <div class="ribbon bg-blue">Contato</div>
-                <div class="card-body">
-                  <h5 cass="text-muted">{{ $championship->email }}</h5>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-status-start bg-dark"></div>
-                <div class="ribbon bg-blue">Tipo do Evento</div>
-                <div class="card-body">
-                  @if ($championship->type == 1)
-                  <h5 cass="text-muted">Crossfit</h5> 
-                  @elseif ($championship->type == 2)
-                  <h5 cass="text-muted">Corrida</h5>
-                  @elseif ($championship->type == 3)
-                  <h5 cass="text-muted">Futevolei</h5>
-                  @endif
-                  
-                </div>
-              </div>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">{{ $championship->name }}</h2>
+          </div>
+          <!-- Page title actions -->
+          <div class="col-auto ms-auto d-print-none">
+            <div class="btn-list">
+              <button form="delete-camp" onclick="return confirm('Você tem certeza disso?');" type="submit" class="btn btn-danger btn-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+               </svg>
+              </button>
+              <button form="delete-camp" onclick="return confirm('Você tem certeza disso?');" type="submit" class="btn btn-danger d-sm-none btn-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+               </svg>
+              </button>
+              <form method="POST" class="form" id="delete-camp" action="{{ route('championship.destroy', $championship->id) }}">
+                @csrf
+                @method('DELETE')
+              </form>
             </div>
-            <div class="card-footer text-end">
-                <button form="delete-camp" onclick="return confirm('Você tem certeza disso?');" type="submit" class="btn btn-danger">Deletar</button>
-                  <form method="POST" class="form" id="delete-camp" action="{{ route('championship.destroy', $championship->id) }}">
-                    @csrf
-                    @method('DELETE')
-                </form>
-              </div>
           </div>
         </div>
       </div>
-    </div>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-12xl mx-auto sm:px-6 lg:px-8 space-y-6">
+          <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+            <div class="max-w-xl">
+              @include('championship.showpartials.info-championship')
+            </div>
+          </div>
+
+          <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+            <div class="max-w-xl">
+              @include('championship.showpartials.info-date-championship')
+            </div>
+          </div>
+      </div>
 </x-app-layout>
