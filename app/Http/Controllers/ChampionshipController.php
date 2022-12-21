@@ -16,8 +16,8 @@ class ChampionshipController extends Controller
      */
     public function index()
     {
-        $championships = championship::all()->where('user_id',Auth::user()->id);
-        return view('championship.index', ['championships' => $championships]);
+        $champs = championship::searchchampsuser();
+        return view('championship.index', ['championships' =>  $champs]);
     }
 
     /**
@@ -66,7 +66,6 @@ class ChampionshipController extends Controller
      */
     public function edit(Championship $championship)
     {
-        Alert::warning('Cuidado', 'Após salvar, as informações estarão disponíveis no sistema automaticamente');
         return view('championship.edit', [
             'championship' => $championship,
         ]);

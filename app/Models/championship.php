@@ -40,4 +40,13 @@ class Championship extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    /**
+     * Busca todos os campeonatos criados pelo usuario
+     */
+    static function searchchampsuser()
+    {
+      return championship::all()->where('user_id',Auth::user()->id);
+    }
+
+
 }
