@@ -21,6 +21,13 @@
                 </div>
               </div>
               <div class="mb-3">
+                <label class="form-label required">Email</label>
+                <div>
+                  <input type="text" class="form-control" id="email" name="email">
+                  <small class="form-hint">Este email estará visível para os participantes</small>
+                </div>
+              </div>
+              <div class="mb-3">
                 <label class="form-label">Tipo</label>
                 <div>
                   <select class="form-select" id="type" name="type"> 
