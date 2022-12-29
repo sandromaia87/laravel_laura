@@ -31,6 +31,7 @@ class Date_championshipController extends Controller
     public function create()
     {
         $champs = Championship::all()->where('id', $_GET['id'])->first();
+        
         if($champs->user_id == Auth::user()->id){
             return  view('date_championship.create', ['championship' => $champs]);
         }
@@ -44,6 +45,14 @@ class Date_championshipController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->validate([
+            'data' => 'required',
+            'hora' => 'required',
+            ]))
+        {
+            Alert::warning('Atenção', 'Preencha todos os campos');
+        }
+
         $datacorreta = $request->data.' '.$request->hora;
         $champs = new Date_championship([
             'idchamps'  => $request->idchamps,

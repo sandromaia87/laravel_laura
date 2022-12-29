@@ -18,6 +18,7 @@ class ChampionshipController extends Controller
     public function index()
     {
         $champs = championship::searchchampsuser();
+        
         return view('championship.index', ['championships' =>  $champs]);
     }
 
