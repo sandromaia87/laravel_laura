@@ -40,6 +40,8 @@ class RouteServiceProvider extends ServiceProvider
         Route::resourceVerbs([
             'create' => 'criar',
             'edit' => 'editar',
+            'championships' => 'campeonatos',
+            'dates' => 'datas',
         ]);
     }
 

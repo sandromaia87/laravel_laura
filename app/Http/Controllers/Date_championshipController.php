@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Championship;
+use Illuminate\Http\Request;
 use App\Models\date_championship;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class Date_championshipController extends Controller
 {
@@ -15,7 +21,7 @@ class Date_championshipController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -25,7 +31,10 @@ class Date_championshipController extends Controller
      */
     public function create()
     {
-        //
+        $champs = Championship::all()->where('id', $_GET['id'])->first();
+        if($champs->user_id == Auth::user()->id){
+            return  view('date_championship.create', ['championship' => $champs]);
+        }
     }
 
     /**
@@ -36,9 +45,23 @@ class Date_championshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $datacorreta = $request->data.' '.$request->hora;
+        $champs = new Date_championship([
+            'idchamps'  => $request->idchamps,
+            'date'      => $datacorreta,
+        ]);
+        $champs->save();
 
+        Alert::success('Sucesso', 'Data vinculada com sucesso');
+        
+        $championship = championship::all()->where('id',$request->idchamps)->first();
+        $date_champs = $championship->datechamps()->get();
+        
+        return Redirect::route('championship.show', [ 
+            'championship' => $championship,
+            'datechampionships' => $date_champs,
+         ]);
+    }
     /**
      * Display the specified resource.
      *

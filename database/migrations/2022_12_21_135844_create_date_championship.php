@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('date_championships', function (Blueprint $table) {
-            $table->bigInteger('id')->primary();
+            $table->id();
             $table->foreignId('idchamps')->constrained('championships');
-            $table->timestamp('date');
+            $table->timestamp('date')->nullable();
             $table->timestamps();
         });
     }

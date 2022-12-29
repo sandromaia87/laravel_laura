@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Championship extends Model
 {
     use HasFactory;
+
+    protected $table = "championships";
 
     protected $fillable = [
         'user_id',
@@ -30,6 +32,7 @@ class Championship extends Model
         });
 
     }
+
     /**
      * Get the user that owns the championship
      *
@@ -40,6 +43,12 @@ class Championship extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
+    public function datechamps(): HasMany
+    {
+        return $this->hasMany(Date_championship::class, 'idchamps', 'id');
+    }
+
+
     /**
      * Busca todos os campeonatos criados pelo usuario
      */
@@ -47,6 +56,5 @@ class Championship extends Model
     {
       return championship::all()->where('user_id',Auth::user()->id);
     }
-
 
 }
