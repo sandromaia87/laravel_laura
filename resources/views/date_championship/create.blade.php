@@ -16,7 +16,7 @@
             <div class="mb-3">
               <label class="form-label">Data</label>
               <div>
-                <input type="date" class="form-control" id="data" name="data" required>
+                <input type="date" class="form-control" id="data" name="data">
                 <input type="hidden" class="form-control" id="idchamps" name="idchamps" value="{{ $championship->id }}">
                 <small class="form-hint">Esta data estará visível para os participantes</small>
               </div>
@@ -24,7 +24,7 @@
             <div class="mb-3">
               <label class="form-label">Horário</label>
               <div>
-                <input type="time" step="1" class="form-control" id="hora" name="hora" required>
+                <input type="time" step="1" class="form-control" id="hora" name="hora">
                 <small class="form-hint">Este horário estará visível para os participantes</small>
               </div>
             </div>
