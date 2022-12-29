@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChampionshipController;
+use App\Http\Controllers\Date_championshipController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,9 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('/championships', ChampionshipController::class)
         ->names('championship');
+
+    Route::resource('/date_championships', Date_championshipController::class)
+        ->names('date_championship');
 
 });
 

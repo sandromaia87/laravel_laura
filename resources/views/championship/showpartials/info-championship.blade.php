@@ -6,22 +6,22 @@
     </header>
 
     <div class="card">
-        <div class="card-status-start bg-dark"></div>
-        <div class="ribbon bg-blue">Contato</div>
-        <div class="card-body">
-            <h3 cass="text-muted">{{ $championship->email }}</h3>
+        <div class="card-status-top bg-blue"></div>
+        <div class="ribbon ribbon-start bg-blue">Contato</div>
+        <div class="card-body ml-12">
+            <h3 class="text-muted ml-12">{{ $championship->email }}</h3>
         </div>
     </div>
     <div class="card">
-        <div class="card-status-start bg-dark"></div>
-        <div class="ribbon bg-blue">Tipo do Evento</div>
-        <div class="card-body">
+        <div class="card-status-top bg-blue"></div>
+        <div class="ribbon ribbon-start bg-blue">Tipo do Evento</div>
+        <div class="card-body ml-12">
             @if ($championship->type == 1)
-                <h3 cass="text-muted">Crossfit</h3> 
+                <h3 class="text-muted ml-12">Crossfit</h3>
             @elseif ($championship->type == 2)
-                <h3 cass="text-muted">Corrida</h3>
+                <h3 class="text-muted ml-12">Corrida</h3>
             @elseif ($championship->type == 3)
-                <h3 cass="text-muted">Futevolei</h3>
+                <h3 class="text-muted ml-12">Futevolei</h3>
             @endif
         </div>
     </div>

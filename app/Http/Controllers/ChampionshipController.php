@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Championship;
+use App\Models\Date_championship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -51,11 +52,15 @@ class ChampionshipController extends Controller
      * @param  \App\Models\Championship  $championship
      * @return \Illuminate\Http\Response
      */
-    public function show(Championship $championship)
-    {
-        return view('championship.show', [
-            'championship' => $championship,
-        ]);
+    public function show(Championship $championship){
+
+        if($championship){
+            $date_champs = $championship->datechamps()->get();
+            return view('championship.show', [
+                'championship' => $championship,
+                'datechampionships' => $date_champs,
+            ]);
+        }
     }
 
     /**
