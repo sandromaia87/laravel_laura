@@ -6,7 +6,6 @@ use App\Models\Championship;
 use Illuminate\Http\Request;
 use App\Models\date_championship;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -104,6 +103,17 @@ class Date_championshipController extends Controller
      */
     public function destroy(date_championship $date_championship)
     {
-        //
+        $championship = championship::all()->where('id',$date_championship->idchamps)->first();
+        $date_champs = $championship->datechamps()->get();
+
+        $date_championship->delete();
+
+        return Redirect::route('championship.show', [ 
+            'championship' => $championship,
+            'datechampionships' => $date_champs,
+         ]);
+
+        
+        
     }
 }
