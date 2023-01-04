@@ -22,4 +22,8 @@ class Date_championship extends Model
         return $this->belongsTo(Championship::class, 'idchamps', 'id');
     }
 
+    public static function champsdatecrescent($idchamps)
+    {
+        return Date_championship::all()->where('idchamps', $idchamps)->sortBy('date');
+    }
 }
