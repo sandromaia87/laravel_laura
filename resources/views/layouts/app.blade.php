@@ -29,7 +29,7 @@
                     </div>
                 </header>
             @endif
-            @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
+            @include('sweetalert::alert')
 
             <!-- Page Content -->
             <main>
@@ -37,5 +37,6 @@
             </main>
         </div>
         @livewireScripts
+        @stack('scripts')
     </body>
 </html>

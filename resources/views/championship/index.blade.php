@@ -89,6 +89,7 @@
                         </svg>
                       </button>
                     </form>
+                    @livewire('confirm-alert', ['champsId' => $championship->id])
                   </div>
                 </div>
                 <div class="card-body">
