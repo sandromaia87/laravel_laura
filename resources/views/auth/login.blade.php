@@ -46,7 +46,7 @@
                     </a>
                 @endif
 
-                <x-primary-button class="btn btn-primary ml-3">
+                <x-primary-button class="pointer-events-auto rounded-md bg-indigo-600 py-2 px-3 text-[0.8125rem] font-semibold leading-5 text-white hover:bg-indigo-500 ml-4 btn btn-primary">
                     {{ __('Entrar') }}
                 </x-primary-button>
             </div>

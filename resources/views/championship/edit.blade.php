@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="card-footer text-end">
-              <button type="submit" class="btn btn-primary">Editar</button>
+              <button type="submit" class="pointer-events-auto rounded-md bg-indigo-600 py-2 px-3 text-[0.8125rem] font-semibold leading-5 text-white hover:bg-indigo-500">Editar</button>
             </div>
           </form>
 
