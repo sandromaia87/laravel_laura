@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Championship;
-use App\Models\Date_championship;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Date_championship;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ChampionshipController extends Controller
@@ -56,7 +55,7 @@ class ChampionshipController extends Controller
     public function show(Championship $championship){
 
         if($championship){
-            $date_champs = $championship->datechamps()->get();
+            $date_champs = Date_championship::champsdatecrescent($championship->id);
             return view('championship.show', [
                 'championship' => $championship,
                 'datechampionships' => $date_champs,

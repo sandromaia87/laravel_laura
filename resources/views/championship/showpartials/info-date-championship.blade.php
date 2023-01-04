@@ -30,10 +30,13 @@
     </div>
   </header>
   <br>
+  @php
+  $dia = 0;
+  @endphp
   @foreach ($datechampionships as $key=>$datechamps )
   <div class="card">
     <div class="card-status-top bg-blue"></div>
-    <div class="ribbon ribbon-start bg-blue">{{ ++$key }}{{'º dia'}}</div>
+    <div class="ribbon ribbon-start bg-blue">{{ ++$dia }}{{'º dia'}}</div>
     <div class="card-body ml-12">
       <div class="container-xl">
         <div class="row g-2 align-items-center">
@@ -42,26 +45,14 @@
           </div>
           <div class="col-auto ms-auto d-print-none">
             <div class="btn-list">
-              <button form="delete-date_champs" onclick="return confirm('Você tem certeza disso?');" type="submit"
-                class="btn btn-danger btn-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-minus" width="24"
-                  height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                </svg>
-              </button>
-              <form method="POST" class="form" id="delete-date_champs"
-                action="{{ route('date_championship.destroy', $datechamps->id) }}">
-                @csrf
-                @method('DELETE')
-              </form>
+              @livewire('confirm-alert-data', ['dataId' => $datechamps->id])
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   @endforeach
 
 </section>

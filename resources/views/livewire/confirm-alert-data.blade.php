@@ -1,4 +1,4 @@
-<button class="btn-action" wire:click="$emit('triggerDelete',{{ $champsId }})">
+<button class="btn-action" wire:click="$emit('triggerDeletedata',{{ $dataId }})">
     <span class="text-red">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash-x" width="24" height="24"
             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -14,10 +14,10 @@
 @push('scripts')
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function () {
-        @this.on('triggerDelete', champsId => {
+        @this.on('triggerDeletedata', dataId => {
             Swal.fire({
                 title: 'Você tem certeza?',
-                text: 'Este campeonato não poderá ser recuperado!',
+                text: 'Está data será apagada!',
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -26,17 +26,12 @@
             }).then((result) => {
          //if user clicks on delete
                 if (result.value) {
-             // calling destroy method to delete
-                    @this.call('destroy',champsId)
-             // success response
-                    Swal.fire({
-                        title: 'Campeonato deletado!', 
-                        icon: 'success',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'Atualizar'
-                    }).then(() => {
-                        @this.call('reload')
-                        });
+                    // calling destroy method to delete
+                            @this.call('destroy',dataId)
+                    // success response
+                            setTimeout(() => {
+                              location.reload()
+                            }, 1000);
                 } else {
                     Swal.fire({
                         title: 'Operação Cancelada!',
