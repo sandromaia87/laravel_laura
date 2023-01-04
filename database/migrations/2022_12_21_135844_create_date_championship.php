@@ -15,8 +15,12 @@ return new class extends Migration
     {
         Schema::create('date_championships', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idchamps')->constrained('championships');
-            $table->timestamp('date')->nullable();
+            $table->foreignId('idchamps')
+                    ->constrained('championships')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+            $table->timestamp('date')
+                    ->nullable();
             $table->timestamps();
         });
     }
