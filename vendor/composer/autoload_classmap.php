@@ -27,6 +27,8 @@ return array(
     'App\\Http\\Controllers\\Date_championshipController' => $baseDir . '/app/Http/Controllers/Date_championshipController.php',
     'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
+    'App\\Http\\Livewire\\ConfirmAlert' => $baseDir . '/app/Http/Livewire/ConfirmAlert.php',
+    'App\\Http\\Livewire\\ConfirmAlertData' => $baseDir . '/app/Http/Livewire/ConfirmAlertData.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => $baseDir . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',

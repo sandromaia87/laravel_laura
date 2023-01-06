@@ -573,6 +573,8 @@ class ComposerStaticInitcee22bfebd090eb2b1af2094cd71f2d6
         'App\\Http\\Controllers\\Date_championshipController' => __DIR__ . '/../..' . '/app/Http/Controllers/Date_championshipController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Livewire\\ConfirmAlert' => __DIR__ . '/../..' . '/app/Http/Livewire/ConfirmAlert.php',
+        'App\\Http\\Livewire\\ConfirmAlertData' => __DIR__ . '/../..' . '/app/Http/Livewire/ConfirmAlertData.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
