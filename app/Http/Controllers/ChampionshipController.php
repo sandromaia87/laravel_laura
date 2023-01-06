@@ -95,7 +95,12 @@ class ChampionshipController extends Controller
         $championship->fill($request->post())->save();
 
         Alert::success('Sucesso', 'Seu campeonato foi atualizado');
-        return view('championship.show', ['championship' => $championship,]);
+
+        $date_champs = Date_championship::champsdatecrescent($championship->id);
+            return view('championship.show', [
+                'championship' => $championship,
+                'datechampionships' => $date_champs,
+            ]);
 
     }
 
