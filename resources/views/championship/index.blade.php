@@ -49,7 +49,7 @@
 
             <div class="col-md-4 mb-3">
               <div class="card">
-                <div class="card-header bg-slate-400">
+                <div class="card-header">
                   <div class="col">
                     <h3 class="card-title">{{ $championship->name}}</h3>
                     <div class="page-pretitle">
