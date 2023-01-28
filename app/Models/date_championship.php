@@ -16,9 +16,9 @@ class Date_championship extends Model
         'idchamps',
         'date',
     ];
-    
+
     public function champsdate()
-    {        
+    {
         return $this->belongsTo(Championship::class, 'idchamps', 'id');
     }
 

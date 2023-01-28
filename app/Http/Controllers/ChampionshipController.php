@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Championship;
 use Illuminate\Http\Request;
 use App\Models\Date_championship;
+use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ChampionshipController extends Controller
@@ -17,7 +18,7 @@ class ChampionshipController extends Controller
     public function index()
     {
         $champs = championship::searchchampsuser();
-        
+
         return view('championship.index', ['championships' =>  $champs]);
     }
 
@@ -39,11 +40,19 @@ class ChampionshipController extends Controller
      */
     public function store(Request $request)
     {
-        Championship::create($request->all());
-        Alert::success('Sucesso', 'Seu campeonato foi criado e está pronto para ser configurado');
-        
+        $novochamps = Championship::create($request->all());
+
+        if ($novochamps) {
+            Alert::success('Sucesso', 'Seu campeonato foi criado e está pronto para ser configurado');
+        } else {
+            Alert::error('Ops', 'Algum erro ocorreu na criação do seu campeonato');
+        }
+
+
         $championships = championship::searchchampsuser();
-        return view('Championship.index', ['championships' => $championships]);
+        return view('Championship.index', [
+            'championships' => $championships
+        ]);
     }
 
     /**
@@ -52,9 +61,9 @@ class ChampionshipController extends Controller
      * @param  \App\Models\Championship  $championship
      * @return \Illuminate\Http\Response
      */
-    public function show(Championship $championship){
-
-        if($championship){
+    public function show(Championship $championship)
+    {
+        if ($championship) {
             $date_champs = Date_championship::champsdatecrescent($championship->id);
             return view('championship.show', [
                 'championship' => $championship,
@@ -85,10 +94,9 @@ class ChampionshipController extends Controller
      */
     public function update(Request $request, Championship $championship)
     {
-        if($request->validate([
+        if ($request->validate([
             'name' => 'required',
-            ]))
-        {
+            ])) {
             Alert::warning('Atenção', 'Preencha todos os campos');
         }
 
@@ -97,13 +105,11 @@ class ChampionshipController extends Controller
         Alert::success('Sucesso', 'Seu campeonato foi atualizado');
 
         $date_champs = Date_championship::champsdatecrescent($championship->id);
-            return view('championship.show', [
-                'championship' => $championship,
-                'datechampionships' => $date_champs,
-            ]);
-
+        return view('championship.show', [
+            'championship' => $championship,
+            'datechampionships' => $date_champs,
+        ]);
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -116,7 +122,5 @@ class ChampionshipController extends Controller
         Alert::success('Excluído', 'Seu campeonato foi excluído com sucesso');
         $championships = Championship::searchchampsuser();
         return view('championship.index', ['championships' => $championships]);
-
-
     }
 }
